@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# SQLite database (contains sensitive employee data)
+*.db
+
+# Environment variables
+.env
+
+# Sensitive data files
+employee_master.json
+output.csv
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+frontend/dist/
+frontend/dist-ssr/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Scratch / test scripts
+check_sheets.py
+read_data.py
+read_more_data.py
+read_tail.py
+excel_data*.json
+/tmp/
+
+# Images (large WhatsApp photos — not needed in repo)
+Images/

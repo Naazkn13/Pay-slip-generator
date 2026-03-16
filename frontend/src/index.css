@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Print styles — must be at global scope, NOT inside @layer,
+   so browsers respect color-adjust for logos and backgrounds. */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page {
+    /* Vertical centering adjustment for Letterheads (~10-12cm from top) */
+    margin: 0 auto !important;
+    margin-top: 10cm !important;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+}
+
+body {
+    background-color: #f3f4f6;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+}

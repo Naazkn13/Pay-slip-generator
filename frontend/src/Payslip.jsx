@@ -91,21 +91,21 @@ const Payslip = ({ data }) => {
                 <div className="flex border-t border-black leading-snug">
                     {/* Left Column */}
                     <div className="w-1/2 border-r border-black p-1 px-2 pb-2">
-                        <div className="flex"><div className="w-[110px]">Employee Code</div><div className="w-3">:</div><div className="flex-1">{staticDetails.emp_code}</div></div>
+                        <div className="flex"><div className="w-[110px]">Employee Code</div><div className="w-3">:</div><div className="flex-1">{staticDetails.emp_code || '-'}</div></div>
                         <div className="flex"><div className="w-[110px]">Employee Name</div><div className="w-3">:</div><div className="flex-1 uppercase">{employeeName}</div></div>
-                        <div className="flex"><div className="w-[110px]">Department</div><div className="w-3">:</div><div className="flex-1">{staticDetails.department}</div></div>
-                        <div className="flex"><div className="w-[110px]">Designation</div><div className="w-3">:</div><div className="flex-1">{staticDetails.designation}</div></div>
-                        <div className="flex"><div className="w-[110px]">Location</div><div className="w-3">:</div><div className="flex-1">{staticDetails.location}</div></div>
-                        <div className="flex items-start"><div className="w-[110px] leading-tight">Employment<br />Type</div><div className="w-3 mt-3">:</div><div className="flex-1 mt-3">{staticDetails.employment_type}</div></div>
+                        <div className="flex"><div className="w-[110px]">Department</div><div className="w-3">:</div><div className="flex-1">{staticDetails.department || '-'}</div></div>
+                        <div className="flex"><div className="w-[110px]">Designation</div><div className="w-3">:</div><div className="flex-1">{staticDetails.designation || '-'}</div></div>
+                        <div className="flex"><div className="w-[110px]">Location</div><div className="w-3">:</div><div className="flex-1">{staticDetails.location || '-'}</div></div>
+                        <div className="flex items-start"><div className="w-[110px] leading-tight">Employment<br />Type</div><div className="w-3 mt-3">:</div><div className="flex-1 mt-3">{staticDetails.employment_type || 'Full Time'}</div></div>
                     </div>
                     {/* Right Column */}
                     <div className="w-1/2 p-1 px-2 pb-2">
-                        <div className="flex"><div className="w-[100px]">Bank Name</div><div className="w-3">:</div><div className="flex-1">{staticDetails.bank_name}</div></div>
-                        <div className="flex"><div className="w-[100px]">Account Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.account_number}</div></div>
-                        <div className="flex"><div className="w-[100px]">PAN Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.pan_number}</div></div>
-                        <div className="flex"><div className="w-[100px]">ESIC Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.esic_number}</div></div>
-                        <div className="flex"><div className="w-[100px]">PF Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.pf_number}</div></div>
-                        <div className="flex"><div className="w-[100px]">LOP Days</div><div className="w-3">:</div><div className="flex-1">{summary.lopDays > 0 ? summary.lopDays : ""}</div></div>
+                        <div className="flex"><div className="w-[100px]">Bank Name</div><div className="w-3">:</div><div className="flex-1">{staticDetails.bank_name || '-'}</div></div>
+                        <div className="flex"><div className="w-[100px]">Account Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.account_number || '-'}</div></div>
+                        <div className="flex"><div className="w-[100px]">PAN Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.pan_number || '-'}</div></div>
+                        <div className="flex"><div className="w-[100px]">ESIC Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.esic_number || '-'}</div></div>
+                        <div className="flex"><div className="w-[100px]">PF Number</div><div className="w-3">:</div><div className="flex-1">{staticDetails.pf_number || '-'}</div></div>
+                        <div className="flex"><div className="w-[100px]">LOP Days</div><div className="w-3">:</div><div className="flex-1">{summary.lopDays > 0 ? summary.lopDays : '-'}</div></div>
                     </div>
                 </div>
 

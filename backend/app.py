@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 import io
 from payslip_parser import parse_excel
-from database import init_db, migrate_from_json, get_all_employees
+from database import init_db, migrate_from_json, get_all_employees, upsert_employee, get_employee
 
 # Load environment variables from .env file (if present)
 load_dotenv()
@@ -38,15 +38,25 @@ def upload_file():
         return jsonify({"error": "Invalid file type. Please upload an Excel file (.xlsx or .xls)"}), 400
 
     try:
-        # Read file stream into bytes
         file_stream = io.BytesIO(file.read())
-
-        # Pass the stream to the parser
         payslip_data = parse_excel(file_stream)
+
+        # Auto-register any employee found in the Excel who isn't in the DB yet.
+        # This seeds their record so bank/PAN/ESIC details can be filled in via
+        # the Employee Master panel — on the NEXT upload those details will show.
+        new_employees = []
+        for payslip in payslip_data:
+            emp_name = payslip['employeeName']
+            if get_employee(emp_name) is None:
+                seed = dict(payslip['staticDetails'])
+                seed['hospital_name'] = payslip.get('hospitalName', 'ASHU EYE HOSPITAL')
+                upsert_employee(emp_name, seed)
+                new_employees.append(emp_name)
 
         return jsonify({
             "message": "File processed successfully",
-            "data": payslip_data
+            "data": payslip_data,
+            "newEmployees": new_employees,   # names auto-registered this upload
         }), 200
 
     except Exception as e:
@@ -57,10 +67,23 @@ def upload_file():
 
 @app.route('/api/employees', methods=['GET'])
 def list_employees():
-    """Return all employees in the database (for admin/debug)."""
+    """Return all employees in the database."""
     try:
         employees = get_all_employees()
         return jsonify({"employees": employees}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/employees', methods=['POST'])
+def save_employee():
+    """Add or update an employee record."""
+    data = request.get_json()
+    if not data or not data.get('name', '').strip():
+        return jsonify({"error": "Employee name is required"}), 400
+    try:
+        upsert_employee(data['name'], data)
+        return jsonify({"message": f"Employee saved successfully"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

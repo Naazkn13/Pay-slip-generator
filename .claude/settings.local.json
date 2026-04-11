@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(netstat -ano)",
-      "Bash(cmd:*)"
+      "Bash(cmd:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)"
     ]
   }
 }

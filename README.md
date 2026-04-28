@@ -1,51 +1,49 @@
 # 💰 Payroll Slip Generator
 
-Payroll automation tool that processes multi-sheet Excel salary data and generates company-formatted employee payslips in bulk.
+Bulk payslip generation tool that converts monthly Excel payroll data into company-formatted employee payslips as PDFs.
 
 ---
 
 ## ⚡ Features
 
-- Upload Excel payroll file
-- Support for multiple Excel sheets
-- Bulk payslip generation for all employees
-- Salary calculation based on backend rules
-- Company-specific payslip layout
-- PDF payslip output
-- Employee-wise payslip generation
+* Upload monthly Excel payroll file
+* Reads payroll values like salary, overtime, month, and attendance-based calculations from Excel
+* Uses saved payslip template/layout
+* Bulk generates employee-wise payslips
+* Reduces manual formatting work like logo placement, field entry, bold text, and copy-paste
+* Company-specific PDF payslip output
 
 ---
 
 ## ⚠️ Current Limitation
 
-Employee master details such as employee ID, name, account number, and PAN number are currently hardcoded.
-
-Planned improvement: move employee master data to database or Excel-based configuration.
+Employee master details such as Employee ID, Name, Account Number, and PAN Number are currently hardcoded.
 
 ---
 
 ## 🧠 Tech Stack
 
-### Frontend
-- React / Next.js
-
-### Backend
-- Python / APIs
-
-### Data Processing
-- Excel Parsing
-- Salary Rule Engine
-- Bulk PDF Generation
+* React / Next.js
+* Python Backend
+* Excel Data Reading
+* PDF Generation
 
 ---
 
 ## 📊 Workflow
 
 ```text
-Multi-sheet Excel Payroll File
+Monthly Excel Payroll Data
         ↓
-Backend Salary Rule Processing
+Backend Reads Required Values
         ↓
-Bulk Payslip Generation
+Saved Payslip Template
         ↓
-Employee-wise PDF Output
+Bulk Employee-wise PDF Payslips
+```
+
+---
+
+## 👨‍💻 Developer
+
+Built by Nuzhat Khan
